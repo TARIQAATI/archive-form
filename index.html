@@ -1,174 +1,199 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نموذج إحصائيات الوثائق</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            direction: rtl;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        input, textarea, select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .submit-btn {
-            margin-top: 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .submit-btn:hover {
-            background-color: #45a049;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>نموذج إحصائيات الوثائق</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+      direction: rtl;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 900px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .success {
+      margin-top: 15px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h2>نموذج إحصائيات الوثائق</h2>
-        <form>
-            <label>هل يوجد مركز/إدارة وثائق ومحفوظات في المنشأة؟</label>
-            <select>
-                <option>نعم</option>
-                <option>لا</option>
-            </select>
+  <form id="archiveForm">
+    <h2>نموذج إحصائيات الوثائق</h2>
 
-            <label>هل أنت متخصص في الوثائق؟</label>
-            <select>
-                <option>نعم</option>
-                <option>لا</option>
-            </select>
+    <label>هل يوجد مركز/إدارة وثائق؟</label>
+    <select name="center">
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
 
-            <label>هل تلقيت تدريبًا في مجال الوثائق؟</label>
-            <select>
-                <option>نعم</option>
-                <option>لا</option>
-            </select>
+    <label>هل أنت متخصص في الوثائق؟</label>
+    <select name="specialist">
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
 
-            <label>هل قمت بالاطلاع على اللوائح والأنظمة المتعلقة بالوثائق والمحفوظات؟</label>
-            <select>
-                <option>نعم</option>
-                <option>لا</option>
-            </select>
+    <label>هل تلقيت تدريبًا؟</label>
+    <select name="trained">
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
 
-            <label>هل يوجد مستودع لحفظ الوثائق؟</label>
-            <select>
-                <option>نعم</option>
-                <option>لا</option>
-            </select>
+    <label>هل اطلعت على الأنظمة؟</label>
+    <select name="regulations">
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
 
-            <label>ملاحظات (إن وجد)</label>
-            <textarea rows="3"></textarea>
+    <label>هل يوجد مستودع؟</label>
+    <select name="storage">
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
 
-            <label>عدد الشنط الحديدية (تقريباً)</label>
-            <input type="number">
+    <label>ملاحظات</label>
+    <textarea name="notes"></textarea>
 
-            <label>عدد الصناديق الكرتونية (تقريباً)</label>
-            <input type="number">
+    <label>عدد الشنط الحديدية</label>
+    <input type="number" name="metalBags" />
 
-            <label>عدد الطرود القماشية (تقريباً)</label>
-            <input type="number">
+    <label>عدد الصناديق الكرتونية</label>
+    <input type="number" name="cartonBoxes" />
 
-            <label>عدد الصناديق البلاستيكية (تقريباً)</label>
-            <input type="number">
+    <label>عدد الطرود القماشية</label>
+    <input type="number" name="fabricPackages" />
 
-            <label>عدد الملفات الإفرنجية (تقريباً)</label>
-            <input type="number">
+    <label>عدد الصناديق البلاستيكية</label>
+    <input type="number" name="plasticBoxes" />
 
-            <label>عدد الملفات العادية (تقريباً)</label>
-            <input type="number">
+    <label>عدد الملفات الإفرنجية</label>
+    <input type="number" name="erfanjeFiles" />
 
-            <label>أخرى (إن وجد)</label>
-            <textarea rows="3"></textarea>
+    <label>عدد الملفات العادية</label>
+    <input type="number" name="normalFiles" />
 
-            <label>الحالة الفنية للوثائق</label>
-            <input type="text">
+    <label>أخرى (إن وجد)</label>
+    <input type="text" name="otherItems" />
 
-            <label>ملاحظات عن حالة الوثائق (إن وجد)</label>
-            <textarea rows="3"></textarea>
+    <label>الحالة الفنية للوثائق</label>
+    <input type="text" name="documentsCondition" />
 
-            <label>الحالة الفنية للسجلات</label>
-            <input type="text">
+    <label>ملاحظات عن الوثائق</label>
+    <input type="text" name="documentsNotes" />
 
-            <label>ملاحظات عن حالة السجلات (إن وجد)</label>
-            <textarea rows="3"></textarea>
+    <label>الحالة الفنية للسجلات</label>
+    <input type="text" name="recordsCondition" />
 
-            <label>الحالة الفنية للصكوك</label>
-            <input type="text">
+    <label>ملاحظات عن السجلات</label>
+    <input type="text" name="recordsNotes" />
 
-            <label>ملاحظات عن حالة الصكوك (إن وجد)</label>
-            <textarea rows="3"></textarea>
+    <label>الحالة الفنية للصكوك</label>
+    <input type="text" name="titlesCondition" />
 
-            <label>الحالة الفنية للخرائط</label>
-            <input type="text">
+    <label>ملاحظات عن الصكوك</label>
+    <input type="text" name="titlesNotes" />
 
-            <label>ملاحظات عن حالة الخرائط (إن وجد)</label>
-            <textarea rows="3"></textarea>
+    <label>الحالة الفنية للخرائط</label>
+    <input type="text" name="mapsCondition" />
 
-            <label>الحالة الفنية للمخططات</label>
-            <input type="text">
+    <label>ملاحظات عن الخرائط</label>
+    <input type="text" name="mapsNotes" />
 
-            <label>الملاحظات عن حالة المخططات (إن وجد)</label>
-            <textarea rows="3"></textarea>
+    <label>الحالة الفنية للمخططات</label>
+    <input type="text" name="plansCondition" />
 
-            <label>الحالة الفنية للمصغرات الفلمية والأشرطة</label>
-            <input type="text">
+    <label>ملاحظات عن المخططات</label>
+    <input type="text" name="plansNotes" />
 
-            <label>الملاحظات عن حالة المصغرات الفلمية والأشرطة (إن وجد)</label>
-            <textarea rows="3"></textarea>
+    <label>الحالة الفنية للمصغرات الفلمية والأشرطة</label>
+    <input type="text" name="mediaCondition" />
 
-            <label>هل يوجد برامج للأرشفة الالكترونية؟</label>
-            <select>
-                <option>نعم</option>
-                <option>لا</option>
-            </select>
+    <label>ملاحظات عن المصغرات والأشرطة</label>
+    <input type="text" name="mediaNotes" />
 
-            <label>هل يتم حفظ الوثائق على وسائط الكترونية اخرى مثل: (فلاش / هارد ديسك)</label>
-            <select>
-                <option>نعم</option>
-                <option>لا</option>
-            </select>
+    <label>هل يوجد برامج أرشفة؟</label>
+    <select name="hasArchivingSystem">
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
 
-            <label>عدد المراسلات (المعاملات) الورقية - الأصول (تقريباً)</label>
-            <input type="number">
+    <label>هل تحفظ على وسائط إلكترونية؟</label>
+    <select name="hasDigitalBackup">
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
 
-            <label>عدد الوثائق الورقية - صفحات (تقريباً)</label>
-            <input type="number">
+    <label>عدد المراسلات الورقية</label>
+    <input type="number" name="paperTransactions" />
 
-            <label>عدد الوثائق الورقية المؤرشفة (تقريباً)</label>
-            <input type="number">
+    <label>عدد الوثائق الورقية - صفحات</label>
+    <input type="number" name="paperPages" />
 
-            <label>عدد الوثائق الورقية التي تحتاج الى أرشفة (تقريباً)</label>
-            <input type="number">
+    <label>عدد الوثائق المؤرشفة</label>
+    <input type="number" name="paperArchived" />
 
-            <button type="submit" class="submit-btn">إرسال</button>
-        </form>
-    </div>
+    <label>عدد الوثائق التي تحتاج أرشفة</label>
+    <input type="number" name="paperToBeArchived" />
+
+    <button type="submit">إرسال</button>
+
+    <div class="success" id="successMessage"></div>
+  </form>
+
+  <script>
+    document.getElementById("archiveForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {};
+      for (let element of form.elements) {
+        if (element.name) data[element.name] = element.value;
+      }
+
+      fetch("https://script.google.com/macros/s/AKfycbzPBo5-0DjHdLrugVyo2VNvY4M3-DVEtbKnqzbMFGL8xbOrWHLB7qwD_3OfJCb-ie0yeg/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+      })
+      .then((res) => res.json())
+      .then((response) => {
+        document.getElementById("successMessage").textContent = "✅ تم إرسال البيانات بنجاح";
+        form.reset();
+      })
+      .catch((error) => {
+        alert("حدث خطأ أثناء الإرسال، تأكد من إعدادات Google Script");
+        console.error("Error!", error.message);
+      });
+    });
+  </script>
 </body>
 </html>
