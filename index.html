@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج إحصائيات الوثائق</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            direction: rtl;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-btn {
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>نموذج إحصائيات الوثائق</h2>
+        <form>
+            <label>هل يوجد مركز/إدارة وثائق ومحفوظات في المنشأة؟</label>
+            <select>
+                <option>نعم</option>
+                <option>لا</option>
+            </select>
+
+            <label>هل أنت متخصص في الوثائق؟</label>
+            <select>
+                <option>نعم</option>
+                <option>لا</option>
+            </select>
+
+            <label>هل تلقيت تدريبًا في مجال الوثائق؟</label>
+            <select>
+                <option>نعم</option>
+                <option>لا</option>
+            </select>
+
+            <label>هل قمت بالاطلاع على اللوائح والأنظمة المتعلقة بالوثائق والمحفوظات؟</label>
+            <select>
+                <option>نعم</option>
+                <option>لا</option>
+            </select>
+
+            <label>هل يوجد مستودع لحفظ الوثائق؟</label>
+            <select>
+                <option>نعم</option>
+                <option>لا</option>
+            </select>
+
+            <label>ملاحظات (إن وجد)</label>
+            <textarea rows="3"></textarea>
+
+            <label>عدد الشنط الحديدية (تقريباً)</label>
+            <input type="number">
+
+            <label>عدد الصناديق الكرتونية (تقريباً)</label>
+            <input type="number">
+
+            <label>عدد الطرود القماشية (تقريباً)</label>
+            <input type="number">
+
+            <label>عدد الصناديق البلاستيكية (تقريباً)</label>
+            <input type="number">
+
+            <label>عدد الملفات الإفرنجية (تقريباً)</label>
+            <input type="number">
+
+            <label>عدد الملفات العادية (تقريباً)</label>
+            <input type="number">
+
+            <label>أخرى (إن وجد)</label>
+            <textarea rows="3"></textarea>
+
+            <label>الحالة الفنية للوثائق</label>
+            <input type="text">
+
+            <label>ملاحظات عن حالة الوثائق (إن وجد)</label>
+            <textarea rows="3"></textarea>
+
+            <label>الحالة الفنية للسجلات</label>
+            <input type="text">
+
+            <label>ملاحظات عن حالة السجلات (إن وجد)</label>
+            <textarea rows="3"></textarea>
+
+            <label>الحالة الفنية للصكوك</label>
+            <input type="text">
+
+            <label>ملاحظات عن حالة الصكوك (إن وجد)</label>
+            <textarea rows="3"></textarea>
+
+            <label>الحالة الفنية للخرائط</label>
+            <input type="text">
+
+            <label>ملاحظات عن حالة الخرائط (إن وجد)</label>
+            <textarea rows="3"></textarea>
+
+            <label>الحالة الفنية للمخططات</label>
+            <input type="text">
+
+            <label>الملاحظات عن حالة المخططات (إن وجد)</label>
+            <textarea rows="3"></textarea>
+
+            <label>الحالة الفنية للمصغرات الفلمية والأشرطة</label>
+            <input type="text">
+
+            <label>الملاحظات عن حالة المصغرات الفلمية والأشرطة (إن وجد)</label>
+            <textarea rows="3"></textarea>
+
+            <label>هل يوجد برامج للأرشفة الالكترونية؟</label>
+            <select>
+                <option>نعم</option>
+                <option>لا</option>
+            </select>
+
+            <label>هل يتم حفظ الوثائق على وسائط الكترونية اخرى مثل: (فلاش / هارد ديسك)</label>
+            <select>
+                <option>نعم</option>
+                <option>لا</option>
+            </select>
+
+            <label>عدد المراسلات (المعاملات) الورقية - الأصول (تقريباً)</label>
+            <input type="number">
+
+            <label>عدد الوثائق الورقية - صفحات (تقريباً)</label>
+            <input type="number">
+
+            <label>عدد الوثائق الورقية المؤرشفة (تقريباً)</label>
+            <input type="number">
+
+            <label>عدد الوثائق الورقية التي تحتاج الى أرشفة (تقريباً)</label>
+            <input type="number">
+
+            <button type="submit" class="submit-btn">إرسال</button>
+        </form>
+    </div>
+</body>
+</html>
