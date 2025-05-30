@@ -5,234 +5,266 @@
   <title>نموذج إحصائيات الوثائق</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       padding: 20px;
       background: #f9f9f9;
       direction: rtl;
     }
     form {
       background: white;
-      padding: 20px;
+      padding: 25px 30px;
       border-radius: 10px;
       max-width: 900px;
       margin: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     label {
       display: block;
-      margin-top: 15px;
-      font-weight: bold;
+      margin-top: 18px;
+      font-weight: 600;
+      font-size: 1.1em;
     }
     input[type="text"],
     input[type="number"],
     textarea,
     select {
       width: 100%;
-      padding: 8px;
-      margin-top: 5px;
+      padding: 8px 10px;
+      margin-top: 6px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
       box-sizing: border-box;
+      font-size: 1em;
+      font-family: inherit;
+    }
+    textarea {
+      resize: vertical;
     }
     button {
-      margin-top: 20px;
-      padding: 10px 20px;
+      margin-top: 28px;
+      padding: 12px 28px;
       background: #007bff;
       color: white;
+      font-weight: 600;
+      font-size: 1.1em;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    .success {
-      margin-top: 15px;
-      color: green;
-      font-weight: bold;
+    button:hover {
+      background: #0056b3;
     }
-    .section-title {
-      margin-top: 30px;
-      font-size: 1.3em;
-      font-weight: bold;
-      border-bottom: 2px solid #007bff;
-      padding-bottom: 5px;
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <form id="archiveForm">
+  <form id="archiveForm" novalidate>
+    <h2 style="text-align:center; margin-bottom:25px;">نموذج إحصائيات الوثائق</h2>
 
-    <h2>نموذج إحصائيات الوثائق</h2>
+    <!-- الحقول التعريفية (مطلوبة) -->
+    <label for="departmentName">اسم القسم / الإدارة:</label>
+    <input type="text" id="departmentName" name="departmentName" required placeholder="ادخل اسم القسم أو الإدارة" />
 
-    <div class="section-title">محتويات المستودعات من الأوعية</div>
+    <label for="departmentHeadName">اسم رئيس القسم / الإدارة:</label>
+    <input type="text" id="departmentHeadName" name="departmentHeadName" required placeholder="ادخل اسم رئيس القسم أو الإدارة" />
 
-    <!-- الوثائق -->
-    <label>الوثائق</label>
+    <label for="dataEntryName">اسم مدخل البيانات:</label>
+    <input type="text" id="dataEntryName" name="dataEntryName" required placeholder="ادخل اسم مدخل البيانات" />
 
-    <label>الحالة الفنية للوثائق المحفوظة بالقسم / المستودع</label>
-    <select name="documentsCondition" class="condition-select" data-related="documentsNotes" required>
+    <!-- الحقول الأصلية -->
+    <label for="center">هل يوجد مركز/إدارة وثائق؟</label>
+    <select id="center" name="center" required>
+      <option value="">-- اختر --</option>
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
+
+    <label for="specialist">هل أنت متخصص في الوثائق؟</label>
+    <select id="specialist" name="specialist" required>
+      <option value="">-- اختر --</option>
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
+
+    <label for="trained">هل تلقيت تدريبًا في مجال الوثائق؟</label>
+    <select id="trained" name="trained" required>
+      <option value="">-- اختر --</option>
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
+
+    <label for="regulations">هل قمت بالاطلاع على الأنظمة المتعلقة بالوثائق والمحفوظات ؟</label>
+    <select id="regulations" name="regulations" required>
+      <option value="">-- اختر --</option>
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
+
+    <!-- بيانات المستودعات -->
+    <label for="storage">هل يوجد مستودع لحفظ الوثائق؟</label>
+    <select id="storage" name="storage" required>
+      <option value="">-- اختر --</option>
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
+
+    <label>ملاحظات</label>
+    <textarea name="notes"></textarea>
+
+    <label>عدد الشنط الحديدية</label>
+    <input type="number" name="metalBags" />
+
+    <label>عدد الصناديق الكرتونية</label>
+    <input type="number" name="cartonBoxes" />
+
+    <label>عدد الطرود القماشية</label>
+    <input type="number" name="fabricPackages" />
+
+    <label>عدد الصناديق البلاستيكية</label>
+    <input type="number" name="plasticBoxes" />
+
+    <label>عدد الملفات الإفرنجية</label>
+    <input type="number" name="erfanjeFiles" />
+
+    <label>عدد الملفات العادية</label>
+    <input type="number" name="normalFiles" />
+
+    <label>أخرى (إن وجد)</label>
+    <input type="text" name="otherItems" />
+
+    <!-- الحالة الفنية للوثائق -->
+    <label for="documentsCondition">الحالة الفنية للوثائق المحفوظة بالقسم / المستودع</label>
+    <select id="documentsCondition" name="documentsCondition" class="condition-select" data-related="documentsNotes" required>
       <option value="">-- اختر الحالة --</option>
       <option value="جيدة">جيدة</option>
       <option value="متوسطة">متوسطة</option>
       <option value="سيئة">سيئة</option>
     </select>
-
-    <label id="label-documentsNotes" style="display:none;">ملاحظات عن حالة الوثائق (إن وجد)</label>
-    <textarea name="documentsNotes" id="documentsNotes" style="display:none;" rows="3"></textarea>
+    <label for="documentsNotes" id="label-documentsNotes" class="hidden">ملاحظات عن حالة الوثائق (إن وجد)</label>
+    <textarea id="documentsNotes" name="documentsNotes" class="hidden" rows="3" placeholder="أدخل ملاحظات..."></textarea>
 
     <!-- السجلات -->
-    <label>السجلات</label>
-
-    <label>الحالة الفنية لسجلات</label>
-    <select name="recordsCondition" class="condition-select" data-related="recordsNotes" required>
+    <label for="recordsCondition"> الحالة الفنية لسجلات</label>
+    <select id="recordsCondition" name="recordsCondition" class="condition-select" data-related="recordsNotes" required>
       <option value="">-- اختر الحالة --</option>
       <option value="جيدة">جيدة</option>
       <option value="متوسطة">متوسطة</option>
       <option value="سيئة">سيئة</option>
     </select>
-
-    <label id="label-recordsNotes" style="display:none;">ملاحظات عن حالة السجلات (إن وجد)</label>
-    <textarea name="recordsNotes" id="recordsNotes" style="display:none;" rows="3"></textarea>
+    <label for="recordsNotes" id="label-recordsNotes" class="hidden">ملاحظات عن حالة السجلات (إن وجد)</label>
+    <textarea id="recordsNotes" name="recordsNotes" class="hidden" rows="3" placeholder="أدخل ملاحظات..."></textarea>
 
     <!-- الصكوك -->
-    <label>الحالة الفنية لصكوك</label>
-    <select name="titlesCondition" class="condition-select" data-related="titlesNotes" required>
+    <label for="titlesCondition">الحالة الفنية لصكوك</label>
+    <select id="titlesCondition" name="titlesCondition" class="condition-select" data-related="titlesNotes" required>
       <option value="">-- اختر الحالة --</option>
       <option value="لا يوجد">لا يوجد</option>
       <option value="جيدة">جيدة</option>
       <option value="متوسطة">متوسطة</option>
       <option value="سيئة">سيئة</option>
     </select>
-
-    <label id="label-titlesNotes" style="display:none;">ملاحظات عن حالة الصكوك (إن وجد)</label>
-    <textarea name="titlesNotes" id="titlesNotes" style="display:none;" rows="3"></textarea>
+    <label for="titlesNotes" id="label-titlesNotes" class="hidden">ملاحظات عن حالة الصكوك (إن وجد)</label>
+    <textarea id="titlesNotes" name="titlesNotes" class="hidden" rows="3" placeholder="أدخل ملاحظات..."></textarea>
 
     <!-- الخرائط -->
-    <label>الخرائط</label>
-
-    <label>الحالة الفنية للخرائط</label>
-    <select name="mapsCondition" class="condition-select" data-related="mapsNotes" required>
+    <label for="mapsCondition">الحالة الفنية للخرائط</label>
+    <select id="mapsCondition" name="mapsCondition" class="condition-select" data-related="mapsNotes" required>
       <option value="">-- اختر الحالة --</option>
       <option value="لا يوجد">لا يوجد</option>
       <option value="جيدة">جيدة</option>
       <option value="متوسطة">متوسطة</option>
       <option value="سيئة">سيئة</option>
     </select>
-
-    <label id="label-mapsNotes" style="display:none;">ملاحظات عن حالة الخرائط (إن وجد)</label>
-    <textarea name="mapsNotes" id="mapsNotes" style="display:none;" rows="3"></textarea>
+    <label for="mapsNotes" id="label-mapsNotes" class="hidden">ملاحظات عن حالة الخرائط (إن وجد)</label>
+    <textarea id="mapsNotes" name="mapsNotes" class="hidden" rows="3" placeholder="أدخل ملاحظات..."></textarea>
 
     <!-- المخططات -->
-    <label>المخططات</label>
-
-    <label>الحالة الفنية للمخططات</label>
-    <select name="plansCondition" class="condition-select" data-related="plansNotes" required>
+    <label for="plansCondition">الحالة الفنية للمخططات</label>
+    <select id="plansCondition" name="plansCondition" class="condition-select" data-related="plansNotes" required>
       <option value="">-- اختر الحالة --</option>
       <option value="لا يوجد">لا يوجد</option>
       <option value="جيدة">جيدة</option>
       <option value="متوسطة">متوسطة</option>
       <option value="سيئة">سيئة</option>
     </select>
-
-    <label id="label-plansNotes" style="display:none;">الملاحظات عن حالة المخططات (إن وجد)</label>
-    <textarea name="plansNotes" id="plansNotes" style="display:none;" rows="3"></textarea>
+    <label for="plansNotes" id="label-plansNotes" class="hidden">الملاحظات عن حالة المخططات (إن وجد)</label>
+    <textarea id="plansNotes" name="plansNotes" class="hidden" rows="3" placeholder="أدخل ملاحظات..."></textarea>
 
     <!-- المصغرات الفلمية -->
-    <label>المصغرات الفلمية</label>
-
-    <label>الحالة الفنية للمصغرات الفلمية والأشرطة</label>
-    <select name="mediaCondition" class="condition-select" data-related="mediaNotes" required>
+    <label for="mediaCondition">الحالة الفنية للمصغرات الفلمية والأشرطة</label>
+    <select id="mediaCondition" name="mediaCondition" class="condition-select" data-related="mediaNotes" required>
       <option value="">-- اختر الحالة --</option>
       <option value="لا يوجد">لا يوجد</option>
       <option value="جيدة">جيدة</option>
       <option value="متوسطة">متوسطة</option>
       <option value="سيئة">سيئة</option>
     </select>
+    <label for="mediaNotes" id="label-mediaNotes" class="hidden">الملاحظات عن حالة المصغرات الفلمية والأشرطة (إن وجد)</label>
+    <textarea id="mediaNotes" name="mediaNotes" class="hidden" rows="3" placeholder="أدخل ملاحظات..."></textarea>
 
-    <label id="label-mediaNotes" style="display:none;">الملاحظات عن حالة المصغرات الفلمية والأشرطة (إن وجد)</label>
-    <textarea name="mediaNotes" id="mediaNotes" style="display:none;" rows="3"></textarea>
-
-    <div class="section-title">برامج الأرشفة الإلكترونية</div>
-
-    <label>هل يوجد برامج للأرشفة الالكترونية (مطلوب)</label>
-    <select name="hasArchivingSystem" required>
+    <!-- برامج الأرشفة الإلكترونية -->
+    <label for="hasArchivingSystem">هل يوجد برامج للأرشفة الالكترونية (مطلوب)</label>
+    <select id="hasArchivingSystem" name="hasArchivingSystem" required>
       <option value="">-- اختر --</option>
       <option value="نعم">نعم</option>
       <option value="لا">لا</option>
     </select>
 
-    <label>هل يتم حفظ الوثائق على وسائط الكترونية اخرى مثل: (فلاش / هارد ديسك) (مطلوب)</label>
-    <select name="hasDigitalBackup" required>
+    <label for="hasDigitalBackup">هل يتم حفظ الوثائق على وسائط إلكترونية أخرى مثل: (فلاش / هارد ديسك) (مطلوب)</label>
+    <select id="hasDigitalBackup" name="hasDigitalBackup" required>
       <option value="">-- اختر --</option>
       <option value="نعم">نعم</option>
       <option value="لا">لا</option>
     </select>
 
-    <div class="section-title">الوثائق التي تحتاج إلى أرشفة إلكترونية</div>
+    <!-- حقول الأرقام -->
+    <label for="paperTransactions">عدد المراسلات (المعاملات) الورقية - الأصول (تقريباً) (مطلوب)</label>
+    <input type="number" id="paperTransactions" name="paperTransactions" min="0" step="1" required />
 
-    <label>عدد المراسلات (المعاملات) الورقية - الأصول (تقريباً) (مطلوب)</label>
-    <input type="number" name="paperTransactions" min="0" required />
+    <label for="paperPages">عدد الوثائق الورقية - صفحات (تقريباً) (مطلوب)</label>
+    <input type="number" id="paperPages" name="paperPages" min="0" step="1" required />
 
-    <label>عدد الوثائق الورقية - صفحات (تقريباً) (مطلوب)</label>
-    <input type="number" name="paperPages" min="0" required />
+    <label for="archivedPaperDocs">عدد الوثائق الورقية المؤرشفة (تقريباً) (مطلوب)</label>
+    <input type="number" id="archivedPaperDocs" name="archivedPaperDocs" min="0" step="1" required />
 
-    <label>عدد الوثائق الورقية المؤرشفة (تقريباً) (مطلوب)</label>
-    <input type="number" name="paperArchived" min="0" required />
+    <label for="paperDocsToArchive">عدد الوثائق الورقية التي تحتاج إلى أرشفة (تقريباً) (مطلوب)</label>
+    <input type="number" id="paperDocsToArchive" name="paperDocsToArchive" min="0" step="1" required />
 
-    <label>عدد الوثائق الورقية التي تحتاج الى ارشفة (تقريباً) (مطلوب)</label>
-    <input type="number" name="paperToBeArchived" min="0" required />
-
-    <button type="submit">إرسال</button>
-
-    <div class="success" id="successMessage"></div>
+    <button type="submit">إرسال النموذج</button>
   </form>
 
   <script>
-    // دالة لإظهار وإخفاء خانة الملاحظات بناءً على اختيار الحالة الفنية
-    function toggleNotes(selectElement) {
-      const relatedId = selectElement.getAttribute("data-related");
-      if (!relatedId) return;
+    // إظهار أو إخفاء ملاحظات بناءً على اختيار الحالة الفنية
+    document.querySelectorAll('.condition-select').forEach(select => {
+      select.addEventListener('change', e => {
+        const relatedId = e.target.dataset.related;
+        const notesField = document.getElementById(relatedId);
+        const notesLabel = document.getElementById('label-' + relatedId);
 
-      const notesLabel = document.getElementById("label-" + relatedId);
-      const notesTextarea = document.getElementById(relatedId);
-
-      if (selectElement.value === "لا يوجد") {
-        notesLabel.style.display = "none";
-        notesTextarea.style.display = "none";
-        notesTextarea.value = ""; // تنظيف الحقل
-      } else if (selectElement.value) {
-        notesLabel.style.display = "block";
-        notesTextarea.style.display = "block";
-      } else {
-        notesLabel.style.display = "none";
-        notesTextarea.style.display = "none";
-        notesTextarea.value = "";
-      }
-    }
-
-    document.querySelectorAll(".condition-select").forEach((select) => {
-      // تفعيل العرض/الإخفاء عند تغير القيمة
-      select.addEventListener("change", () => toggleNotes(select));
-
-      // تفعيل العرض/الإخفاء عند تحميل الصفحة حسب القيمة الافتراضية
-      toggleNotes(select);
+        if (e.target.value === 'لا يوجد') {
+          notesField.value = '';
+          notesField.classList.add('hidden');
+          notesLabel.classList.add('hidden');
+        } else if (e.target.value !== '') {
+          notesField.classList.remove('hidden');
+          notesLabel.classList.remove('hidden');
+        } else {
+          notesField.value = '';
+          notesField.classList.add('hidden');
+          notesLabel.classList.add('hidden');
+        }
+      });
     });
 
-    // إرسال البيانات مع عرض رسالة نجاح أو خطأ
-    document.getElementById("archiveForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const form = e.target;
-      const data = {};
-      for (let element of form.elements) {
-        if (element.name) {
-          data[element.name] = element.value;
-        }
+    // منع الإرسال بدون ملء الحقول المطلوبة (تفعيل التحقق الأساسي)
+    document.getElementById('archiveForm').addEventListener('submit', function(e) {
+      if (!this.checkValidity()) {
+        e.preventDefault();
+        alert('يرجى تعبئة جميع الحقول المطلوبة بشكل صحيح قبل الإرسال.');
       }
-      // هنا يمكن إضافة إرسال البيانات إلى السيرفر أو حفظها حسب الحاجة
-
-      // عرض رسالة نجاح
-      document.getElementById("successMessage").textContent = "تم إرسال النموذج بنجاح.";
-      form.reset();
-
-      // إعادة تهيئة إخفاء الملاحظات
-      document.querySelectorAll(".condition-select").forEach((select) => toggleNotes(select));
     });
   </script>
 </body>
