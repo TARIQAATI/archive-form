@@ -234,6 +234,9 @@
     <input type="number" id="paperDocsToArchive" name="paperDocsToArchive" min="0" step="1" required />
 
     <button type="submit">إرسال النموذج</button>
+
+<div id="formStatus" style="color: green; font-weight: bold; margin-top: 20px;"></div>
+
   </form>
 
   <script>
@@ -259,13 +262,40 @@
       });
     });
 
-    // منع الإرسال بدون ملء الحقول المطلوبة (تفعيل التحقق الأساسي)
-    document.getElementById('archiveForm').addEventListener('submit', function(e) {
-      if (!this.checkValidity()) {
-        e.preventDefault();
-        alert('يرجى تعبئة جميع الحقول المطلوبة بشكل صحيح قبل الإرسال.');
-      }
-    });
+   
   </script>
+<script>
+document.getElementById("archiveForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+
+ // التحقق من صحة النموذج
+  if (!form.checkValidity()) {
+    alert("يرجى تعبئة جميع الحقول المطلوبة بشكل صحيح قبل الإرسال.");
+    return;
+  }
+
+  const data = {};
+  for (let element of form.elements) {
+    if (element.name) data[element.name] = element.value;
+  }
+
+  fetch("https://script.google.com/macros/s/AKfycbzPBo5-0DjHdLrugVyo2VNvY4M3-DVEtbKnqzbMFGL8xbOrWHLB7qwD_3OfJCb-ie0yeg/exec", {
+    method: "POST",
+    body: JSON.stringify(data),
+  })
+  .then((res) => res.json())
+  .then((response) => {
+    document.getElementById("formStatus").textContent = "✅ تم إرسال النموذج بنجاح.";
+    form.reset();
+  })
+  .catch((error) => {
+    document.getElementById("formStatus").textContent = "❌ حدث خطأ أثناء الإرسال.";
+    console.error("Error!", error.message);
+  });
+});
+</script>
+
 </body>
 </html>
