@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>نموذج إحصائيات الوثائق</title>
- <style>
+  <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       padding: 20px;
@@ -31,6 +31,15 @@
       margin-top: 5px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      box-sizing: border-box;
+    }
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: auto;
+      margin: 0; 
     }
     button {
       margin-top: 20px;
@@ -51,15 +60,6 @@
 <body>
   <form id="archiveForm">
     <h2>نموذج إحصائيات الوثائق</h2>
-
-<label>اسم القسم / الإدارة:</label>
-<input type="text" name="departmentName" required />
-
-<label>اسم مدخل البيانات:</label>
-<input type="text" name="dataEntryName" required />
-
-<label>اسم رئيس القسم / الإدارة:</label>
-<input type="text" name="headName" required />
 
     <label>هل يوجد مركز/إدارة وثائق؟</label>
     <select name="center">
@@ -91,64 +91,88 @@
       <option value="لا">لا</option>
     </select>
 
-    <label>ملاحظات</label>
+    <label>ملاحظات (إن وجد)</label>
     <textarea name="notes"></textarea>
 
-    <label>عدد الشنط الحديدية</label>
-    <input type="number" name="metalBags" />
+    <label>عدد الشنط الحديدية (تقريباً)</label>
+    <input type="number" name="metalBags" min="0" step="1" />
 
-    <label>عدد الصناديق الكرتونية</label>
-    <input type="number" name="cartonBoxes" />
+    <label>عدد الصناديق الكرتونية (تقريباً)</label>
+    <input type="number" name="cartonBoxes" min="0" step="1" />
 
-    <label>عدد الطرود القماشية</label>
-    <input type="number" name="fabricPackages" />
+    <label>عدد الطرود القماشية (تقريباً)</label>
+    <input type="number" name="fabricPackages" min="0" step="1" />
 
-    <label>عدد الصناديق البلاستيكية</label>
-    <input type="number" name="plasticBoxes" />
+    <label>عدد الصناديق البلاستيكية (تقريباً)</label>
+    <input type="number" name="plasticBoxes" min="0" step="1" />
 
-    <label>عدد الملفات الإفرنجية</label>
-    <input type="number" name="erfanjeFiles" />
+    <label>عدد الملفات الإفرنجية (تقريباً)</label>
+    <input type="number" name="erfanjeFiles" min="0" step="1" />
 
-    <label>عدد الملفات العادية</label>
-    <input type="number" name="normalFiles" />
+    <label>عدد الملفات العادية (تقريباً)</label>
+    <input type="number" name="normalFiles" min="0" step="1" />
 
     <label>أخرى (إن وجد)</label>
     <input type="text" name="otherItems" />
 
     <label>الحالة الفنية للوثائق</label>
-    <input type="text" name="documentsCondition" />
+    <select name="documentsCondition">
+      <option value="جيدة">جيدة</option>
+      <option value="متوسطة">متوسطة</option>
+      <option value="سيئة">سيئة</option>
+    </select>
 
-    <label>ملاحظات عن الوثائق</label>
+    <label>ملاحظات عن الوثائق (إن وجد)</label>
     <input type="text" name="documentsNotes" />
 
     <label>الحالة الفنية للسجلات</label>
-    <input type="text" name="recordsCondition" />
+    <select name="recordsCondition">
+      <option value="جيدة">جيدة</option>
+      <option value="متوسطة">متوسطة</option>
+      <option value="سيئة">سيئة</option>
+    </select>
 
-    <label>ملاحظات عن السجلات</label>
+    <label>ملاحظات عن السجلات (إن وجد)</label>
     <input type="text" name="recordsNotes" />
 
     <label>الحالة الفنية للصكوك</label>
-    <input type="text" name="titlesCondition" />
+    <select name="titlesCondition">
+      <option value="جيدة">جيدة</option>
+      <option value="متوسطة">متوسطة</option>
+      <option value="سيئة">سيئة</option>
+    </select>
 
-    <label>ملاحظات عن الصكوك</label>
+    <label>ملاحظات عن الصكوك (إن وجد)</label>
     <input type="text" name="titlesNotes" />
 
     <label>الحالة الفنية للخرائط</label>
-    <input type="text" name="mapsCondition" />
+    <select name="mapsCondition">
+      <option value="جيدة">جيدة</option>
+      <option value="متوسطة">متوسطة</option>
+      <option value="سيئة">سيئة</option>
+    </select>
 
-    <label>ملاحظات عن الخرائط</label>
+    <label>ملاحظات عن الخرائط (إن وجد)</label>
     <input type="text" name="mapsNotes" />
 
     <label>الحالة الفنية للمخططات</label>
-    <input type="text" name="plansCondition" />
+    <select name="plansCondition">
+      <option value="جيدة">جيدة</option>
+      <option value="متوسطة">متوسطة</option>
+      <option value="سيئة">سيئة</option>
+    </select>
 
-    <label>ملاحظات عن المخططات</label>
+    <label>ملاحظات عن المخططات (إن وجد)</label>
     <input type="text" name="plansNotes" />
 
     <label>الحالة الفنية للمصغرات الفلمية والأشرطة</label>
-    <input type="text" name="mediaCondition" />
+    <select name="mediaCondition">
+      <option value="جيدة">جيدة</option>
+      <option value="متوسطة">متوسطة</option>
+      <option value="سيئة">سيئة</option>
+    </select>
 
-    <label>ملاحظات عن المصغرات والأشرطة</label>
+    <label>ملاحظات عن المصغرات والأشرطة (إن وجد)</label>
     <input type="text" name="mediaNotes" />
 
     <label>هل يوجد برامج أرشفة؟</label>
@@ -157,23 +181,23 @@
       <option value="لا">لا</option>
     </select>
 
-    <label>هل تحفظ على وسائط إلكترونية؟</label>
+    <label>هل يتم حفظ الوثائق على وسائط إلكترونية أخرى مثل: ( فلاش / هارد ديسك )</label>
     <select name="hasDigitalBackup">
       <option value="نعم">نعم</option>
       <option value="لا">لا</option>
     </select>
 
-    <label>عدد المراسلات الورقية</label>
-    <input type="number" name="paperTransactions" />
+    <label>عدد المراسلات الورقية (المعاملات) - الأصول (تقريباً)</label>
+    <input type="number" name="paperTransactions" min="0" step="1" />
 
-    <label>عدد الوثائق الورقية - صفحات</label>
-    <input type="number" name="paperPages" />
+    <label>عدد الوثائق الورقية - صفحات (تقريباً)</label>
+    <input type="number" name="paperPages" min="0" step="1" />
 
-    <label>عدد الوثائق المؤرشفة</label>
-    <input type="number" name="paperArchived" />
+    <label>عدد الوثائق المؤرشفة (تقريباً)</label>
+    <input type="number" name="paperArchived" min="0" step="1" />
 
-    <label>عدد الوثائق التي تحتاج أرشفة</label>
-    <input type="number" name="paperToBeArchived" />
+    <label>عدد الوثائق التي تحتاج أرشفة (تقريباً)</label>
+    <input type="number" name="paperToBeArchived" min="0" step="1" />
 
     <button type="submit">إرسال</button>
 
