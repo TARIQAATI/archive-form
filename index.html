@@ -33,14 +33,6 @@
       border-radius: 5px;
       box-sizing: border-box;
     }
-    input[type="number"] {
-      -moz-appearance: textfield;
-    }
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-      -webkit-appearance: auto;
-      margin: 0; 
-    }
     button {
       margin-top: 20px;
       padding: 10px 20px;
@@ -55,149 +47,137 @@
       color: green;
       font-weight: bold;
     }
+    .section-title {
+      margin-top: 30px;
+      font-size: 1.3em;
+      font-weight: bold;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 5px;
+    }
   </style>
 </head>
 <body>
   <form id="archiveForm">
+
     <h2>نموذج إحصائيات الوثائق</h2>
 
-    <label>هل يوجد مركز/إدارة وثائق؟</label>
-    <select name="center">
-      <option value="نعم">نعم</option>
-      <option value="لا">لا</option>
-    </select>
+    <div class="section-title">محتويات المستودعات من الأوعية</div>
 
-    <label>هل أنت متخصص في الوثائق؟</label>
-    <select name="specialist">
-      <option value="نعم">نعم</option>
-      <option value="لا">لا</option>
-    </select>
+    <!-- الوثائق -->
+    <label>الوثائق</label>
 
-    <label>هل تلقيت تدريبًا؟</label>
-    <select name="trained">
-      <option value="نعم">نعم</option>
-      <option value="لا">لا</option>
-    </select>
-
-    <label>هل اطلعت على الأنظمة؟</label>
-    <select name="regulations">
-      <option value="نعم">نعم</option>
-      <option value="لا">لا</option>
-    </select>
-
-    <label>هل يوجد مستودع؟</label>
-    <select name="storage">
-      <option value="نعم">نعم</option>
-      <option value="لا">لا</option>
-    </select>
-
-    <label>ملاحظات (إن وجد)</label>
-    <textarea name="notes"></textarea>
-
-    <label>عدد الشنط الحديدية (تقريباً)</label>
-    <input type="number" name="metalBags" min="0" step="1" />
-
-    <label>عدد الصناديق الكرتونية (تقريباً)</label>
-    <input type="number" name="cartonBoxes" min="0" step="1" />
-
-    <label>عدد الطرود القماشية (تقريباً)</label>
-    <input type="number" name="fabricPackages" min="0" step="1" />
-
-    <label>عدد الصناديق البلاستيكية (تقريباً)</label>
-    <input type="number" name="plasticBoxes" min="0" step="1" />
-
-    <label>عدد الملفات الإفرنجية (تقريباً)</label>
-    <input type="number" name="erfanjeFiles" min="0" step="1" />
-
-    <label>عدد الملفات العادية (تقريباً)</label>
-    <input type="number" name="normalFiles" min="0" step="1" />
-
-    <label>أخرى (إن وجد)</label>
-    <input type="text" name="otherItems" />
-
-    <label>الحالة الفنية للوثائق</label>
-    <select name="documentsCondition">
+    <label>الحالة الفنية للوثائق المحفوظة بالقسم / المستودع</label>
+    <select name="documentsCondition" class="condition-select" data-related="documentsNotes" required>
+      <option value="">-- اختر الحالة --</option>
       <option value="جيدة">جيدة</option>
       <option value="متوسطة">متوسطة</option>
       <option value="سيئة">سيئة</option>
     </select>
 
-    <label>ملاحظات عن الوثائق (إن وجد)</label>
-    <input type="text" name="documentsNotes" />
+    <label id="label-documentsNotes" style="display:none;">ملاحظات عن حالة الوثائق (إن وجد)</label>
+    <textarea name="documentsNotes" id="documentsNotes" style="display:none;" rows="3"></textarea>
 
-    <label>الحالة الفنية للسجلات</label>
-    <select name="recordsCondition">
+    <!-- السجلات -->
+    <label>السجلات</label>
+
+    <label>الحالة الفنية لسجلات</label>
+    <select name="recordsCondition" class="condition-select" data-related="recordsNotes" required>
+      <option value="">-- اختر الحالة --</option>
       <option value="جيدة">جيدة</option>
       <option value="متوسطة">متوسطة</option>
       <option value="سيئة">سيئة</option>
     </select>
 
-    <label>ملاحظات عن السجلات (إن وجد)</label>
-    <input type="text" name="recordsNotes" />
+    <label id="label-recordsNotes" style="display:none;">ملاحظات عن حالة السجلات (إن وجد)</label>
+    <textarea name="recordsNotes" id="recordsNotes" style="display:none;" rows="3"></textarea>
 
-    <label>الحالة الفنية للصكوك</label>
-    <select name="titlesCondition">
+    <!-- الصكوك -->
+    <label>الحالة الفنية لصكوك</label>
+    <select name="titlesCondition" class="condition-select" data-related="titlesNotes" required>
+      <option value="">-- اختر الحالة --</option>
+      <option value="لا يوجد">لا يوجد</option>
       <option value="جيدة">جيدة</option>
       <option value="متوسطة">متوسطة</option>
       <option value="سيئة">سيئة</option>
     </select>
 
-    <label>ملاحظات عن الصكوك (إن وجد)</label>
-    <input type="text" name="titlesNotes" />
+    <label id="label-titlesNotes" style="display:none;">ملاحظات عن حالة الصكوك (إن وجد)</label>
+    <textarea name="titlesNotes" id="titlesNotes" style="display:none;" rows="3"></textarea>
+
+    <!-- الخرائط -->
+    <label>الخرائط</label>
 
     <label>الحالة الفنية للخرائط</label>
-    <select name="mapsCondition">
+    <select name="mapsCondition" class="condition-select" data-related="mapsNotes" required>
+      <option value="">-- اختر الحالة --</option>
+      <option value="لا يوجد">لا يوجد</option>
       <option value="جيدة">جيدة</option>
       <option value="متوسطة">متوسطة</option>
       <option value="سيئة">سيئة</option>
     </select>
 
-    <label>ملاحظات عن الخرائط (إن وجد)</label>
-    <input type="text" name="mapsNotes" />
+    <label id="label-mapsNotes" style="display:none;">ملاحظات عن حالة الخرائط (إن وجد)</label>
+    <textarea name="mapsNotes" id="mapsNotes" style="display:none;" rows="3"></textarea>
+
+    <!-- المخططات -->
+    <label>المخططات</label>
 
     <label>الحالة الفنية للمخططات</label>
-    <select name="plansCondition">
+    <select name="plansCondition" class="condition-select" data-related="plansNotes" required>
+      <option value="">-- اختر الحالة --</option>
+      <option value="لا يوجد">لا يوجد</option>
       <option value="جيدة">جيدة</option>
       <option value="متوسطة">متوسطة</option>
       <option value="سيئة">سيئة</option>
     </select>
 
-    <label>ملاحظات عن المخططات (إن وجد)</label>
-    <input type="text" name="plansNotes" />
+    <label id="label-plansNotes" style="display:none;">الملاحظات عن حالة المخططات (إن وجد)</label>
+    <textarea name="plansNotes" id="plansNotes" style="display:none;" rows="3"></textarea>
+
+    <!-- المصغرات الفلمية -->
+    <label>المصغرات الفلمية</label>
 
     <label>الحالة الفنية للمصغرات الفلمية والأشرطة</label>
-    <select name="mediaCondition">
+    <select name="mediaCondition" class="condition-select" data-related="mediaNotes" required>
+      <option value="">-- اختر الحالة --</option>
+      <option value="لا يوجد">لا يوجد</option>
       <option value="جيدة">جيدة</option>
       <option value="متوسطة">متوسطة</option>
       <option value="سيئة">سيئة</option>
     </select>
 
-    <label>ملاحظات عن المصغرات والأشرطة (إن وجد)</label>
-    <input type="text" name="mediaNotes" />
+    <label id="label-mediaNotes" style="display:none;">الملاحظات عن حالة المصغرات الفلمية والأشرطة (إن وجد)</label>
+    <textarea name="mediaNotes" id="mediaNotes" style="display:none;" rows="3"></textarea>
 
-    <label>هل يوجد برامج أرشفة؟</label>
-    <select name="hasArchivingSystem">
+    <div class="section-title">برامج الأرشفة الإلكترونية</div>
+
+    <label>هل يوجد برامج للأرشفة الالكترونية (مطلوب)</label>
+    <select name="hasArchivingSystem" required>
+      <option value="">-- اختر --</option>
       <option value="نعم">نعم</option>
       <option value="لا">لا</option>
     </select>
 
-    <label>هل يتم حفظ الوثائق على وسائط إلكترونية أخرى مثل: ( فلاش / هارد ديسك )</label>
-    <select name="hasDigitalBackup">
+    <label>هل يتم حفظ الوثائق على وسائط الكترونية اخرى مثل: (فلاش / هارد ديسك) (مطلوب)</label>
+    <select name="hasDigitalBackup" required>
+      <option value="">-- اختر --</option>
       <option value="نعم">نعم</option>
       <option value="لا">لا</option>
     </select>
 
-    <label>عدد المراسلات الورقية (المعاملات) - الأصول (تقريباً)</label>
-    <input type="number" name="paperTransactions" min="0" step="1" />
+    <div class="section-title">الوثائق التي تحتاج إلى أرشفة إلكترونية</div>
 
-    <label>عدد الوثائق الورقية - صفحات (تقريباً)</label>
-    <input type="number" name="paperPages" min="0" step="1" />
+    <label>عدد المراسلات (المعاملات) الورقية - الأصول (تقريباً) (مطلوب)</label>
+    <input type="number" name="paperTransactions" min="0" required />
 
-    <label>عدد الوثائق المؤرشفة (تقريباً)</label>
-    <input type="number" name="paperArchived" min="0" step="1" />
+    <label>عدد الوثائق الورقية - صفحات (تقريباً) (مطلوب)</label>
+    <input type="number" name="paperPages" min="0" required />
 
-    <label>عدد الوثائق التي تحتاج أرشفة (تقريباً)</label>
-    <input type="number" name="paperToBeArchived" min="0" step="1" />
+    <label>عدد الوثائق الورقية المؤرشفة (تقريباً) (مطلوب)</label>
+    <input type="number" name="paperArchived" min="0" required />
+
+    <label>عدد الوثائق الورقية التي تحتاج الى ارشفة (تقريباً) (مطلوب)</label>
+    <input type="number" name="paperToBeArchived" min="0" required />
 
     <button type="submit">إرسال</button>
 
@@ -205,27 +185,54 @@
   </form>
 
   <script>
+    // دالة لإظهار وإخفاء خانة الملاحظات بناءً على اختيار الحالة الفنية
+    function toggleNotes(selectElement) {
+      const relatedId = selectElement.getAttribute("data-related");
+      if (!relatedId) return;
+
+      const notesLabel = document.getElementById("label-" + relatedId);
+      const notesTextarea = document.getElementById(relatedId);
+
+      if (selectElement.value === "لا يوجد") {
+        notesLabel.style.display = "none";
+        notesTextarea.style.display = "none";
+        notesTextarea.value = ""; // تنظيف الحقل
+      } else if (selectElement.value) {
+        notesLabel.style.display = "block";
+        notesTextarea.style.display = "block";
+      } else {
+        notesLabel.style.display = "none";
+        notesTextarea.style.display = "none";
+        notesTextarea.value = "";
+      }
+    }
+
+    document.querySelectorAll(".condition-select").forEach((select) => {
+      // تفعيل العرض/الإخفاء عند تغير القيمة
+      select.addEventListener("change", () => toggleNotes(select));
+
+      // تفعيل العرض/الإخفاء عند تحميل الصفحة حسب القيمة الافتراضية
+      toggleNotes(select);
+    });
+
+    // إرسال البيانات مع عرض رسالة نجاح أو خطأ
     document.getElementById("archiveForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const form = e.target;
       const data = {};
       for (let element of form.elements) {
-        if (element.name) data[element.name] = element.value;
+        if (element.name) {
+          data[element.name] = element.value;
+        }
       }
+      // هنا يمكن إضافة إرسال البيانات إلى السيرفر أو حفظها حسب الحاجة
 
-      fetch("https://script.google.com/macros/s/AKfycbzPBo5-0DjHdLrugVyo2VNvY4M3-DVEtbKnqzbMFGL8xbOrWHLB7qwD_3OfJCb-ie0yeg/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-      })
-      .then((res) => res.json())
-      .then((response) => {
-        document.getElementById("successMessage").textContent = "✅ تم إرسال البيانات بنجاح";
-        form.reset();
-      })
-      .catch((error) => {
-        alert("حدث خطأ أثناء الإرسال، تأكد من إعدادات Google Script");
-        console.error("Error!", error.message);
-      });
+      // عرض رسالة نجاح
+      document.getElementById("successMessage").textContent = "تم إرسال النموذج بنجاح.";
+      form.reset();
+
+      // إعادة تهيئة إخفاء الملاحظات
+      document.querySelectorAll(".condition-select").forEach((select) => toggleNotes(select));
     });
   </script>
 </body>
